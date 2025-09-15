@@ -13,5 +13,9 @@ class IngredientsLocators:
     FLUORESCENT_BUN_COUNTER = (
     By.XPATH, "//a[@href='/ingredient/61c0c5a71d1f82001bdaaa6d']//p[contains(@class, 'counter')]")
     ORDER_BUTTON = (By.XPATH, "//button[text()='Оформить заказ']")
+    ORDER_NUMBER = (
+        By.XPATH,
+        "//h2[contains(@class, 'text_type_digits-large')]"
+    )
 
 

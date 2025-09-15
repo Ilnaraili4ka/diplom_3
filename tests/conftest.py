@@ -36,7 +36,8 @@ def authorized_user(driver):
             "password": user_data["password"]
         }
         RequestMetods.auth_user(auth_data)
-    yield {"driver": driver, "access_token": access_token}
+    yield {"driver": driver, "access_token": access_token, "email": user_data["email"],
+            "password": user_data["password"]}
     with allure.step('Удалить пользователя'):
         RequestMetods.delete_user(headers)
 

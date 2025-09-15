@@ -7,7 +7,7 @@ class MainPageLocators:
     FEED_BUTTON = (By.XPATH, "//p[text()='Лента Заказов']")
     PROFILE_BUTTON = (By.XPATH, "//p[text()='Личный Кабинет']")
     LOGO = (By.XPATH, "//div[@class='AppHeader_header__logo__2D0X2']/a")
-    OVERLAY = By.XPATH, ".//div[contains(@class, 'Modal_modal_overlay__x2ZCr')]/parent::div"
+    OVERLAY = (By.XPATH, ".//div[contains(@class, 'Modal_modal_overlay__x2ZCr')]/parent::div")
     ORDER_NUMBER = (
         By.XPATH,
         "//h2[contains(@class, 'text_type_digits-large')]"

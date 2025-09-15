@@ -28,27 +28,27 @@ class BasePage:
         element.send_keys(keys)
 
     @allure.step("Получить текст элемента")
-    def get_text_on_element(self, locator, timeout=10):
+    def get_text_on_element(self, locator, timeout=20):
         element = self.wait_for_element(locator, timeout)
         return element.text
 
     @allure.step("Подождать и проверить, что атрибут элемента содержит текст")
-    def wait_for_attribute(self, locator, attribute, value, timeout=10):
+    def wait_for_attribute(self, locator, attribute, value, timeout=20):
         return WebDriverWait(self.driver, timeout).until(
             EC.text_to_be_present_in_element_attribute(locator, attribute, value)
         )
 
     @allure.step('Подождать пока элемент не станет невидимым')
     def wait_for_element_hide(self, locator):
-        WebDriverWait(self.driver, timeout=10).until(EC.invisibility_of_element_located(locator))
+        WebDriverWait(self.driver, timeout=20).until(EC.invisibility_of_element_located(locator))
         return self.driver.find_element(*locator)
 
     @allure.step('Перетащить элемент в корзину')
     def drag_and_drop_element(self, source, target):
         drag_and_drop(self.driver, source, target)
 
-    @allure.step('Дождаться видимости окна')
-    def wait_for_visible_and_interactable(self, locator, timeout=10):
+    @allure.step('Дождатся видимости окна')
+    def wait_for_visible_and_interactable(self, locator, timeout=20):
         element = WebDriverWait(self.driver, timeout).until(
             EC.element_to_be_clickable(locator)
         )
@@ -56,11 +56,11 @@ class BasePage:
 
     @allure.step('Проверка присутствия элемента')
     def check_presence(self, locator):
-        WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(locator))
+        WebDriverWait(self.driver, 20).until(EC.presence_of_element_located(locator))
         return self.driver.find_element(*locator)
 
     @allure.step('Ожидание определенного текста в элементе')
-    def wait_for_text(self, locator, expected_text, timeout=10):
+    def wait_for_text(self, locator, expected_text, timeout=20):
         WebDriverWait(self.driver, timeout).until(
         EC.text_to_be_present_in_element(locator, expected_text)
     )
@@ -71,3 +71,14 @@ class BasePage:
     @allure.step('Возвращает текущий URL')
     def current_url(self):
         return self.driver.current_url
+
+    @allure.step('Проверка присутствия элемента')
+    def check_presence(self, locator):
+        WebDriverWait(self.driver, 20).until(EC.presence_of_element_located(locator))
+        return self.driver.find_element(*locator)
+
+    @allure.step('Ждать кликабельности кнопки')
+    def wait_click(self, locator):
+        WebDriverWait(self.driver, 15).until(
+            EC.element_to_be_clickable(locator)
+        ).click()

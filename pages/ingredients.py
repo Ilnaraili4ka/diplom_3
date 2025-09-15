@@ -11,7 +11,6 @@ class Ingredients(BasePage):
 
     @allure.step("Кликнуть на ингредиент Флюоресцентная булка R2-D3")
     def click_bun_ingredient(self):
-        self.wait_for_element_hide(MainPageLocators.OVERLAY)
         self.click_on_element(IngredientsLocators.BUN_FLUORESCENT)
 
     @allure.step("Проверить, что модальное окно отображается")
@@ -44,6 +43,12 @@ class Ingredients(BasePage):
     @allure.step("Получить элемент зоны конструктора")
     def get_constructor_area(self):
         return self.wait_for_element(IngredientsLocators.CONSTRUCTOR_AREA)
+
+    @allure.step("Нажать кнопку «Оформить заказ")
+    def click_button_order(self):
+        self.main_page_loading_wait()
+        self.click_on_element(IngredientsLocators.ORDER_BUTTON)
+
 
 
 
